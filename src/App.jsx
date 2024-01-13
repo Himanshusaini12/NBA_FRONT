@@ -14,17 +14,14 @@ const App = () => {
   // State for file and selected endpoint for Excel processing
   const [file, setFile] = useState(null);
   const [selectedEndpoint, setSelectedEndpoint] = useState(
-    "https://nba-api-0ixh.onrender.com/process-excel",
+    "http://localhost:3000/process-excel",
   );
 
   const fetchData = async (endpoint) => {
     try {
-      const response = await axios.get(
-        `https://nba-api-0ixh.onrender.com/${endpoint}`,
-        {
-          responseType: "blob",
-        },
-      );
+      const response = await axios.get(`http://localhost:3000/${endpoint}`, {
+        responseType: "blob",
+      });
 
       const blob = new Blob([response.data], {
         type: response.headers["content-type"],
@@ -159,34 +156,20 @@ const App = () => {
         <label>Props: </label>
         <select value={selectedEndpoint} onChange={handleEndpointChange}>
           <option value="">Select Player Prop</option>
-          <option value="https://nba-api-0ixh.onrender.com/PtspRebpAst">
+          <option value="http://localhost:3000/PtspRebpAst">
             Pts+Reb+Ast
           </option>
-          <option value="https://nba-api-0ixh.onrender.com/points">Points</option>
-          <option value="https://nba-api-0ixh.onrender.com/rebounds">
-            Rebounds
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/assists">
-            Assists
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/threes">Threes</option>
-          <option value="https://nba-api-0ixh.onrender.com/blocks">Blocks</option>
-          <option value="https://nba-api-0ixh.onrender.com/steals">Steals</option>
-          <option value="https://nba-api-0ixh.onrender.com/turnovers">
-            Turnovers
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/PtspReb">
-            Pts+Reb
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/PtspAst">
-            Pts+Ast
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/RebpAst">
-            Reb+Ast
-          </option>
-          <option value="https://nba-api-0ixh.onrender.com/StlpBlk">
-            Stl+Blk
-          </option>
+          <option value="http://localhost:3000/points">Points</option>
+          <option value="http://localhost:3000/rebounds">Rebounds</option>
+          <option value="http://localhost:3000/assists">Assists</option>
+          <option value="http://localhost:3000/threes">Threes</option>
+          <option value="http://localhost:3000/blocks">Blocks</option>
+          <option value="http://localhost:3000/steals">Steals</option>
+          <option value="http://localhost:3000/turnovers">Turnovers</option>
+          <option value="http://localhost:3000/PtspReb">Pts+Reb</option>
+          <option value="http://localhost:3000/PtspAst">Pts+Ast</option>
+          <option value="http://localhost:3000/RebpAst">Reb+Ast</option>
+          <option value="http://localhost:3000/StlpBlk">Stl+Blk</option>
           {/* Add more options as needed */}
         </select>
 
